@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot Animation</title>
+<!----------------- CSS ------------------------------>
+<style>
+:root {
+    --blue: #4284f4;
+    --red: #eb4236;
+    --yellow: #fcbc05;
+    --green: #34a854;
+    --size: 2.5rem;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+#ball_dot {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--size); 
+    
+}
+.dot {
+    background-color: grey;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    
+}
+.red {
+    background-color: var(--red);
+}
+.yellow {
+    background-color: var(--yellow);
+}
+.green {
+    background-color: var(--green);
+}
+
+.blue {
+    background-color: var(--blue);
+}
+
+#start_btn, 
+#stop_btn {
+    background-color: rgb(10, 53, 28);
+    color: #fff;
+}
+#start_btn:hover,
+#stop_btn:hover {
+    cursor: pointer;
+}
+
+@keyframes slideright {
+    0% {transform: translateX(0px);background-color: var(--red);left: 0px;top: 0px;}
+    25% {transform: translateX(100px);background: var(--yellow);left: 100px;top: 0px;}
+    50% {transform: translateX(0px);background-color: var(--green);left: 100px;top: 100px;}
+    75% {transform: translateX(100px);background-color: var(--blue);left: 0px;top: 100px;}
+    100% {background: var(--red);left: 0px;top: 0px;}
+}
+@keyframes slidedown {
+    0% {transform: translateY(0px);background-color: var(--yellow);right: 0px;top: 0px;}
+    25% {transform: translateY(100px);background: var(--blue);right: 0px;top: 100px;}
+    50% {transform: translateY(0px);background-color: var(--green);right: 0px;top: 100px;}
+    75% {transform: translateY(100px);background-color: var(--red);right: 100px;top: 0px;}
+    100% {background: var(--yellow);right: 0px;top: 0px;} 
+}
+@keyframes slideup {
+    0% {transform: translateY(0px);background-color: var(--green);left: 0px;bottom: 0px;}
+    25% {transform: translateY(-100px);background: var(--red);left: 0px;bottom: 100px;}
+    50% {transform: translateY(0px);background-color: var(--yellow);left: 100px;bottom: 0px;}
+    75% {transform: translateY(-100px);background-color: var(--blue);left: 0px;bottom: 100px;}
+    100% {background: var(--green);left: 0px;top: 0px;}
+}
+@keyframes slideleft {
+    0% {transform: translateX(0px);background-color: var(--blue);right: 0px;top: 0px;}
+    25% {transform: translateX(-100px);background: var(--green);right: 100px;top: 0px;}
+    50% {transform: translateX(0px);background-color: var(--red);right: 0px;top: 100px;}
+    75% {transform: translateX(-100px);background-color: var(--yellow);right: 100px;top: 0px;}
+    100% {background: var(--blue);left: 0px;top: 0px;}
+} 
+</style>
+
+<!----------------------------------------------------------->
+</head>
+<body>
+
+<!------------------- Html ------------------------------------>
+
+    <div id="ball_dot">
+        <div class="dot red" id="dot_red"></div>
+        <div class="dot yellow" id="dot_yellow"></div>
+        <div class="dot green" id="dot_green"></div>
+        <div class="dot blue" id="dot_blue"></div>
+        <button id="start_btn">Start</button>
+        <button id="stop_btn">Stop</button>
+    </div>
+
+    <!------------------- Javascript ---------------------->
+<script>
+    start_btn.addEventListener("click", function(){
+        dot_red.style.animation = "slideright 2s ease-in-out forwards infinite";
+        dot_yellow.style.animation = "slidedown 2s ease-in-out forwards infinite";
+        dot_green.style.animation = "slideup 2s ease-in-out forwards infinite";
+        dot_blue.style.animation = "slideleft 2s ease-in-out forwards infinite";
+    });
+    stop_btn.addEventListener("click", function(){
+        dot_red.style.animation = "";
+        dot_yellow.style.animation = "";
+        dot_green.style.animation = "";
+        dot_blue.style.animation = "";
+    });
+    
+</script>
+</body>
+</html>
